@@ -1,0 +1,21 @@
+version: "3"
+networks:
+  develop:
+    external: true
+    name: "develop"
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sqlserver
+    hostname: sqlserver
+    ports:
+      - 14330:1433
+    networks:
+      - develop
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Password1
+      - MSSQL_PID=Developer
+    volumes:
+      - ~/dev/docker/volumes/sqlserver:/var/data:rw
