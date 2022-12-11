@@ -1,0 +1,23 @@
+version: "3"
+networks:
+  develop:
+    external: true
+    name: "develop"
+
+services:
+ babelfish:
+   image: coolincy/babelfish:14.6-2.3.0 #jonathanpotts/babelfishpg:2.2.0
+   container_name: babelfish
+   hostname: babelfish
+   ports:
+     - "5432:5432"
+     - "1433:1433"
+   networks:
+     - develop
+   environment:
+     - POSTGRES_USER=postgres
+     - POSTGRES_PASSWORD=Password1
+#   volumes:
+#     - c:/dev/docker/volumes/babelfish:/var/lib/postgresql/data:rw
+   command: -u sa -p Password1 -d babelfish -m multi-db #multi-db | single-db
+    
