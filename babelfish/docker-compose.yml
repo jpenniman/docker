@@ -10,7 +10,7 @@ services:
    hostname: babelfish
    ports:
      - "5432:5432"
-     - "5433:1433"
+     - "5433:1433" # SQL Server is already listening on 1433 on the Windows laptop
    networks:
      - develop
    # environment:
@@ -18,8 +18,8 @@ services:
      #- POSTGRES_USER=postgres # not used by jonathanpotts image
      #- POSTGRES_PASSWORD=Password1  # not used by jonathanpotts image
    volumes:
-     #- ~/docker/volumes/babelfish:/var/lib/postgresql/data:rw
-     - ~/docker/volumes/babelfish:/data:rw
+     #- ~/docker/volumes/babelfish:/var/lib/postgresql/data:rw  # for the coolincy image
+     - ~/docker/volumes/babelfish:/data:rw  # for the jonathanpotts image
    command: -u sa -p Password1 -d babelfish_db -m multi-db #multi-db | single-db
 
 
@@ -30,4 +30,6 @@ services:
 #Type "help" for help.
 #
 #postgres=# alter user postgres password 'Password1';
+#postgres=# alter database postgres set timezone tp 'US/Eastern';
+#postgres=# alter database babelfish_db set timezone tp 'US/Eastern';
 #postgres=# \q
