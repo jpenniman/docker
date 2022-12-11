@@ -2,7 +2,6 @@ version: "3"
 networks:
   develop:
     external: true
-    name: "develop"
 
 services:
   sqlserver:
