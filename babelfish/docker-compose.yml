@@ -6,7 +6,7 @@ networks:
 
 services:
  babelfish:
-   image: coolincy/babelfish:14.6-2.3.0 #jonathanpotts/babelfishpg:2.2.0
+   image: jonathanpotts/babelfishpg:2.2.0 #coolincy/babelfish:14.5-2.2.0 #
    container_name: babelfish
    hostname: babelfish
    ports:
@@ -15,9 +15,17 @@ services:
    networks:
      - develop
    environment:
+     #- POSTGRES_DB=babelfish_db
      - POSTGRES_USER=postgres
-     - POSTGRES_PASSWORD=Password1
-#   volumes:
-#     - c:/dev/docker/volumes/babelfish:/var/lib/postgresql/data:rw
-   command: -u sa -p Password1 -d babelfish -m multi-db #multi-db | single-db
-    
+     - POSTGRES_PASSWORD=postgres
+   volumes:
+     #- ~/dev/docker/volumes/babelfish:/var/lib/postgresql/data:rw
+     - ~/dev/docker/volumes/babelfish:/data:rw
+   command: -u sa -p postgres -d babelfish_db -m multi-db #multi-db | single-db
+
+# postgres@babelfish:/opt/babelfish/bin$ ./psql
+#psql (14.5)
+#Type "help" for help.
+#
+#postgres=# alter user postgres password 'Password1';
+#postgres=# \q
