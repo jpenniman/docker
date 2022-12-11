@@ -11,18 +11,21 @@ services:
    hostname: babelfish
    ports:
      - "5432:5432"
-     - "1433:1433"
+     - "5433:1433"
    networks:
      - develop
-   environment:
-     #- POSTGRES_DB=babelfish_db
-     - POSTGRES_USER=postgres
-     - POSTGRES_PASSWORD=postgres
+   # environment:
+     #- POSTGRES_DB=babelfish_db # not used by jonathanpotts image
+     #- POSTGRES_USER=postgres # not used by jonathanpotts image
+     #- POSTGRES_PASSWORD=Password1  # not used by jonathanpotts image
    volumes:
      #- ~/dev/docker/volumes/babelfish:/var/lib/postgresql/data:rw
-     - ~/dev/docker/volumes/babelfish:/data:rw
-   command: -u sa -p postgres -d babelfish_db -m multi-db #multi-db | single-db
+     - c:/dev/docker/volumes/babelfish:/data:rw
+   command: -u sa -p Password1 -d babelfish_db -m multi-db #multi-db | single-db
 
+
+#######
+# Run psql in the terminal to set the password for the postgres user
 # postgres@babelfish:/opt/babelfish/bin$ ./psql
 #psql (14.5)
 #Type "help" for help.
