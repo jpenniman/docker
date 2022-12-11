@@ -18,8 +18,8 @@ services:
      #- POSTGRES_USER=postgres # not used by jonathanpotts image
      #- POSTGRES_PASSWORD=Password1  # not used by jonathanpotts image
    volumes:
-     #- ~/dev/docker/volumes/babelfish:/var/lib/postgresql/data:rw
-     - c:/dev/docker/volumes/babelfish:/data:rw
+     #- ~/docker/volumes/babelfish:/var/lib/postgresql/data:rw
+     - ~/docker/volumes/babelfish:/data:rw
    command: -u sa -p Password1 -d babelfish_db -m multi-db #multi-db | single-db
 
 

@@ -17,4 +17,4 @@ services:
       - SA_PASSWORD=Password1
       - MSSQL_PID=Developer
     volumes:
-      - ~/dev/docker/volumes/sqlserver:/var/data:rw
+      - ~/docker/volumes/sqlserver:/var/data:rw

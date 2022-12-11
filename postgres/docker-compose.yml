@@ -15,7 +15,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=Password1
     volumes:
-      - ~/dev/docker/volumes/postgres:/var/lib/postgresql/data:rw
+      - ~/docker/volumes/postgres:/var/lib/postgresql/data:rw
 #  babelfish:
 #    image: coolincy/babelfish:14
 #    container_name: babelfish
