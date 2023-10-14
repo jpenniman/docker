@@ -1,0 +1,10 @@
+version: '3'
+services:
+  net80:
+    image: net80
+    container_name: net80
+    ports:
+      - '8022:22'
+    volumes:
+      - /Users/jason/dev:/home/jason/dev:rw
+      
