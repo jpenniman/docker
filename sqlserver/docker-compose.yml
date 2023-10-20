@@ -16,5 +16,6 @@ services:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Password1
       - MSSQL_PID=Developer
+      - MSSQL_AGENT_ENABLED=True
     volumes:
       - ~/docker/volumes/sqlserver:/var/data:rw
