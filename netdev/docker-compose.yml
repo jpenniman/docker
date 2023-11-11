@@ -6,5 +6,5 @@ services:
     ports:
       - '8022:22'
     volumes:
-      - /Users/jason/dev:/home/jason/dev:rw
+      - ~/dev:/home/jason/dev:rw
       

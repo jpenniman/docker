@@ -1,13 +1,13 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0
+
 ARG username
 ARG password
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0
-
 RUN apt update && apt install openssh-server sudo -y
 
-RUN useradd -rm -d /home/$username -s /bin/bash -g root -G sudo -u 1000 $username 
+RUN useradd -rm -d /home/$username -s /bin/bash -g root -G sudo -u 1000 $username
 
-RUN  echo '$username:$password' | chpasswd
+RUN  echo "$username:$password" | chpasswd
 
 RUN service ssh start
 
