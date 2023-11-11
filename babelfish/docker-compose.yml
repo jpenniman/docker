@@ -13,23 +13,27 @@ services:
      - "5433:1433" # SQL Server is already listening on 1433 on the Windows laptop
    networks:
      - develop
+
    # environment:
      #- POSTGRES_DB=babelfish_db # not used by jonathanpotts image
      #- POSTGRES_USER=postgres # not used by jonathanpotts image
      #- POSTGRES_PASSWORD=Password1  # not used by jonathanpotts image
+
    volumes:
      #- ~/docker/volumes/babelfish:/var/lib/postgresql/data:rw  # for the coolincy image
      - ~/docker/volumes/babelfish:/data:rw  # for the jonathanpotts image
+   
+   # setup the user/password to use for the SQL Server login, name to use for the babelfish database and the mode
    command: -u sa -p Password1 -d babelfish_db -m multi-db #multi-db | single-db
 
 
 #######
-# Run psql in the terminal to set the password for the postgres user
+# Run psql in the terminal to set the password for the postgres user. This container image doesn't setup the postgres user, only the SQL Server user.
 # postgres@babelfish:/opt/babelfish/bin$ ./psql
 #psql (14.5)
 #Type "help" for help.
 #
 #postgres=# alter user postgres password 'Password1';
-#postgres=# alter database postgres set timezone tp 'US/Eastern';
-#postgres=# alter database babelfish_db set timezone tp 'US/Eastern';
 #postgres=# \q
+
+# change log_timezone and timezone in postgresql.conf, then restart
